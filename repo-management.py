@@ -27,6 +27,7 @@ plugin_type = (TYPE_CORE,)
 
 def prereposetup_hook(conduit):
   url = conduit.confString('main', 'url', '')
+
   if url == "":
       conduit.info(2, 'repo-management: url to managed repos not set')
       return False
@@ -42,7 +43,7 @@ def prereposetup_hook(conduit):
 
   # try to parse json response
   try:
-    repos        = response.json()
+    repos = response.json()
   except:
     conduit.info(2, 'repo-management: got invalid json response from remote url')
     return False
